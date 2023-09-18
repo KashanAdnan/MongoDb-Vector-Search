@@ -15,14 +15,14 @@ function App() {
     getAllStories()
   }, [])
   const getAllStories = () => {
-    axios.get("http://localhost:3000/api/v1/posts").then((data) => {
+    axios.get("https://mongo-db-vector-backend-ik8u.vercel.app/api/v1/posts").then((data) => {
       setData(data.data.data)
     }).catch((err) => {
       console.log(err);
     })
   }
   const deletePost = (id) => {
-    axios.delete("http://localhost:3000/api/v1/post/" + id).then((data) => {
+    axios.delete("https://mongo-db-vector-backend-ik8u.vercel.app/api/v1/post/" + id).then((data) => {
       toast.success("Post Deleted Successfully!")
       getAllStories()
     }).catch((err) => {
@@ -32,7 +32,7 @@ function App() {
   const postData = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("http://localhost:3000/api/v1/post", {
+      await axios.post("https://mongo-db-vector-backend-ik8u.vercel.app/api/v1/post", {
         title,
         body
       })
@@ -47,7 +47,7 @@ function App() {
   const search = async (e) => {
     e.preventDefault()
     try {
-      axios.get("http://localhost:3000/api/v1/search/?q=" + searchVal)
+      axios.get("https://mongo-db-vector-backend-ik8u.vercel.app/api/v1/search/?q=" + searchVal)
         .then((data) => {
           setData(data.data.data)
           setSearch("")
@@ -58,7 +58,7 @@ function App() {
   }
   const updatePost = (e, id, index) => {
     e.preventDefault()
-    axios.put("http://localhost:3000/api/v1/post/" + id, {
+    axios.put("https://mongo-db-vector-backend-ik8u.vercel.app/api/v1/post/" + id, {
       title: updateTitle,
       body: updateBody
     }).then((data) => {
